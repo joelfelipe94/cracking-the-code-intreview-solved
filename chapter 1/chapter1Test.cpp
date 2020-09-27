@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "exercise1.hpp"
 #include "exercise2.hpp"
+#include "exercise3.hpp"
 
 // Exercise 1
 
@@ -70,6 +71,27 @@ TEST(exercise2, evenSize)
 {
     std::string expected("abcd"), inStr("dcba");
     GTEST_ASSERT_EQ(reverse(inStr), expected);
+}
+
+TEST(exercise3, isPermutationTrue)
+{
+    std::string first("abcd"), second("dcba");
+    auto result = isPermutation(first,second);
+    GTEST_ASSERT_EQ(result, true);
+}
+
+TEST(exercise3, isPermutationFalse)
+{
+    std::string first("abdd"), second("dcba");
+    auto result = isPermutation(first,second);
+    GTEST_ASSERT_EQ(result, false);
+}
+
+TEST(exercise3, isPermutationFalseDifferentSizes)
+{
+    std::string first("abdd"), second("dba");
+    auto result = isPermutation(first,second);
+    GTEST_ASSERT_EQ(result, false);
 }
 
 int main(int argc, char* argv[])

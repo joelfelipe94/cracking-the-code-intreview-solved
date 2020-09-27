@@ -47,7 +47,7 @@ TEST(exercise1, isAllUniqueInplaceLarge)
                     "0123456789012345678901234567890123456789"
                     "0123456789012345678901234567890123456789"
                     "34567890123456789");
-    GTEST_ASSERT_EQ(inputStr, false);
+    GTEST_ASSERT_EQ(isAllUnique(inputStr), false);
 }
 
 TEST(exercise1, isAllUniqueInplaceEmpty)

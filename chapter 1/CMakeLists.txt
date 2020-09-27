@@ -1,11 +1,9 @@
 cmake_minimum_required(VERSION 3.12) # version can be different
 
-project(cracking_code_intreview) #name of your project
+project(cracking_code_intreview)
 
 include_directories(googletest/include) # this is so we can #include <gtest/gtest.h>
 
-add_executable(exercise1Test exercise1Test.cpp) # add exercise 1
-add_executable(exercise2Test exercise2Test.cpp) # add exercise 2
+add_executable(chapter1Test chapter1Test.cpp) # add test executable
 
-target_link_libraries(exercise1Test PRIVATE gtest) # link google test to this executable
-target_link_libraries(exercise2Test PRIVATE gtest) # link google test to this executable
+target_link_libraries(chapter1Test PRIVATE gtest) # link google test to this executable

@@ -1,7 +1,10 @@
 #include <gtest/gtest.h>
 #include "exercise1.hpp"
+#include "exercise2.hpp"
 
-TEST(Testexercise1, isAllUniqueTrue)
+// Exercise 1
+
+TEST(exercise1, isAllUniqueTrue)
 {
     GTEST_ASSERT_EQ(isAllUnique("abcde"), true);
 }
@@ -28,7 +31,7 @@ TEST(exercise1, isAllUniqueEmpty)
     GTEST_ASSERT_EQ(isAllUnique(""), true);
 }
 
-TEST(Testexercise1, isAllUniqueInplaceTrue)
+TEST(exercise1, isAllUniqueInplaceTrue)
 {
     GTEST_ASSERT_EQ(isAllUniqueInplace("abcde"), true);
 }
@@ -55,6 +58,19 @@ TEST(exercise1, isAllUniqueInplaceEmpty)
     GTEST_ASSERT_EQ(isAllUniqueInplace(""), true);
 }
 
+// Exercise 2
+
+TEST(exercise2, oddSize)
+{
+    std::string expected("abcde"), inStr("edcba");
+    GTEST_ASSERT_EQ(reverse(inStr), expected);
+}
+
+TEST(exercise2, evenSize)
+{
+    std::string expected("abcd"), inStr("dcba");
+    GTEST_ASSERT_EQ(reverse(inStr), expected);
+}
 
 int main(int argc, char* argv[])
 {

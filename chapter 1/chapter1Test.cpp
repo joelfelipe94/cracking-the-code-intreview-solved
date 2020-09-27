@@ -2,6 +2,7 @@
 #include "exercise1.hpp"
 #include "exercise2.hpp"
 #include "exercise3.hpp"
+#include "exercise4.hpp"
 
 // Exercise 1
 
@@ -92,6 +93,13 @@ TEST(exercise3, isPermutationFalseDifferentSizes)
     std::string first("abdd"), second("dba");
     auto result = isPermutation(first,second);
     GTEST_ASSERT_EQ(result, false);
+}
+
+TEST(exercise4, replaceSpaceWithPercent20)
+{
+    std::string str("ab dd  "), expected("ab%20dd");
+    replaceSpaceWithPercent20(str);
+    GTEST_ASSERT_EQ(str, expected);
 }
 
 int main(int argc, char* argv[])

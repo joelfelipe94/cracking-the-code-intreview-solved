@@ -3,6 +3,7 @@
 #include "exercise2.hpp"
 #include "exercise3.hpp"
 #include "exercise4.hpp"
+#include "exercise5.hpp"
 
 // Exercise 1
 
@@ -100,6 +101,18 @@ TEST(exercise4, replaceSpaceWithPercent20)
     std::string str("ab dd  "), expected("ab%20dd");
     replaceSpaceWithPercent20(str);
     GTEST_ASSERT_EQ(str, expected);
+}
+
+TEST(exercise5, compress)
+{
+    std::string str("aabcccccaaa"), expected("a2b1c5a3");
+    GTEST_ASSERT_EQ(compress(str), expected);
+}
+
+TEST(exercise5, compressNotApplied)
+{
+    std::string str("aabcscscscscsaaa"), expected("aabcscscscscsaaa");
+    GTEST_ASSERT_EQ(compress(str), expected);
 }
 
 int main(int argc, char* argv[])

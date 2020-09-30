@@ -4,6 +4,7 @@
 #include "exercise3.hpp"
 #include "exercise4.hpp"
 #include "exercise5.hpp"
+#include "exercise6.hpp"
 
 // Exercise 1
 
@@ -113,6 +114,21 @@ TEST(exercise5, compressNotApplied)
 {
     std::string str("aabcscscscscsaaa"), expected("aabcscscscscsaaa");
     GTEST_ASSERT_EQ(compress(str), expected);
+}
+
+TEST(exercise6, rotateImage)
+{
+    vector< vector<int> > image = { {1, 2, 3, 4},
+                                    {1, 2, 3, 4},
+                                    {1, 2, 3, 4},
+                                    {1, 2, 3, 4}};
+
+    vector< vector<int> > expected = { {1, 1, 1, 1},
+                                        {2, 2, 2, 2},
+                                        {3, 3, 3, 3},
+                                        {4, 4, 4, 4}};
+    rotateImage(image);                                          
+    GTEST_ASSERT_EQ(image, expected);
 }
 
 int main(int argc, char* argv[])

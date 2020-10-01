@@ -5,6 +5,7 @@
 #include "exercise4.hpp"
 #include "exercise5.hpp"
 #include "exercise6.hpp"
+#include "exercise7.hpp"
 
 // Exercise 1
 
@@ -130,6 +131,40 @@ TEST(exercise6, rotateImage)
     rotateImage(image);                                          
     GTEST_ASSERT_EQ(image, expected);
 }
+
+TEST(exercise7, resetColumnLine)
+{
+    vector< vector<int> > mat = { {0, 2, 3, 4, 5},
+                                {1, 2, 3, 4, 5},
+                                {1, 2, 3, 4, 5},
+                                {1, 2, 3, 0, 5}};
+
+    vector< vector<int> > expected = { {0, 0, 0, 0, 0},
+                                        {0, 2, 3, 0, 5},
+                                        {0, 2, 3, 0, 5},
+                                        {0, 0, 0, 0, 0}};
+    resetColumnRow(mat);                                          
+    GTEST_ASSERT_EQ(mat, expected);
+}
+
+TEST(exercise7, resetColumnLineEmptyMatrix)
+{
+    vector< vector<int> > mat;
+
+    vector< vector<int> > expected;
+    resetColumnRow(mat);                                          
+    GTEST_ASSERT_EQ(mat, expected);
+}
+
+TEST(exercise7, resetColumnLineEmptyColumn)
+{
+    vector< vector<int> > mat{{}};
+
+    vector< vector<int> > expected{{}};
+    resetColumnRow(mat);                                          
+    GTEST_ASSERT_EQ(mat, expected);
+}
+
 
 int main(int argc, char* argv[])
 {

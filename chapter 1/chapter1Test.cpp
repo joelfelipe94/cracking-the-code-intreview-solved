@@ -6,6 +6,7 @@
 #include "exercise5.hpp"
 #include "exercise6.hpp"
 #include "exercise7.hpp"
+#include "exercise8.hpp"
 
 // Exercise 1
 
@@ -163,6 +164,14 @@ TEST(exercise7, resetColumnLineEmptyColumn)
     vector< vector<int> > expected{{}};
     resetColumnRow(mat);                                          
     GTEST_ASSERT_EQ(mat, expected);
+}
+
+TEST(exercise8, isRotation)
+{
+    string firstString("waterbottle");
+    string secondString("erbottlewat");
+    auto expected = true;
+    GTEST_ASSERT_EQ(isRotation(firstString,secondString), expected);
 }
 
 

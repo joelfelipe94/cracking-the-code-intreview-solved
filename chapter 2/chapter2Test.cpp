@@ -2,6 +2,7 @@
 #include "exercise1.hpp"
 #include "exercise2.hpp"
 #include "exercise3.hpp"
+#include "exercise4.hpp"
 #include <iterator>
 
 // Exercise 1
@@ -56,7 +57,7 @@ TEST(exercise2, getNthElementFromEndLast)
     GTEST_ASSERT_EQ(result, expected);
 }
 
-TEST(exercise2, deleteMiddleElement)
+TEST(exercise3, deleteMiddleElement)
 {
     auto listChar = forward_list<char>{'e', 'd', 'c', 'b', 'a'};
     auto expected = forward_list<char>{'e', 'd', 'b', 'a'};
@@ -66,13 +67,48 @@ TEST(exercise2, deleteMiddleElement)
     GTEST_ASSERT_EQ(listChar, expected);
 }
 
-TEST(exercise2, deleteMiddleElementFirst)
+TEST(exercise3, deleteMiddleElementFirst)
 {
     auto listChar = forward_list<char>{'e', 'd', 'c', 'b', 'a'};
     auto expected = forward_list<char>{'d', 'c', 'b', 'a'};
     auto itMid = listChar.begin();
     deleteMiddleElement(listChar,itMid);
     GTEST_ASSERT_EQ(listChar, expected);
+}
+
+TEST(exercise4, partitionateX)
+{
+    auto listChar = forward_list<char>{'e', 'd', 'c', 'b', 'a'};
+    auto X = 'c';
+    partitionateX(listChar, X);
+    bool validSolution = verifySolution(listChar, X);
+    GTEST_ASSERT_EQ(validSolution, true);
+}
+
+TEST(exercise4, partitionateXSmallerElement)
+{
+    auto listChar = forward_list<char>{'e', 'd', 'c', 'b', 'a'};
+    auto X = '0';
+    partitionateX(listChar, X);
+    bool validSolution = verifySolution(listChar, X);
+    GTEST_ASSERT_EQ(validSolution, true);
+}
+
+TEST(exercise4, partitionateXGreatherElement)
+{
+    auto listChar = forward_list<char>{'e', 'd', 'c', 'b', 'a'};
+    auto X = 'z';
+    partitionateX(listChar, X);
+    bool validSolution = verifySolution(listChar, X);
+    GTEST_ASSERT_EQ(validSolution, true);
+}
+
+TEST(exercise4, partitionateXCheckSolutionVerifier)
+{
+    auto listChar = forward_list<char>{'e', 'd', 'c', 'b', 'a'};
+    auto X = 'c';
+    bool validSolution = verifySolution(listChar, X);
+    GTEST_ASSERT_EQ(validSolution, false);
 }
 
 int main(int argc, char* argv[])

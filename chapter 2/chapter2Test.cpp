@@ -3,6 +3,7 @@
 #include "exercise2.hpp"
 #include "exercise3.hpp"
 #include "exercise4.hpp"
+#include "exercise5.hpp"
 #include <iterator>
 
 // Exercise 1
@@ -109,6 +110,24 @@ TEST(exercise4, partitionateXCheckSolutionVerifier)
     auto X = 'c';
     bool validSolution = verifySolution(listChar, X);
     GTEST_ASSERT_EQ(validSolution, false);
+}
+
+TEST(exercise5, add)
+{
+    auto num1 = forward_list<char>{'7', '1', '6'};
+    auto num2 = forward_list<char>{'5', '9', '2'};
+    auto expected = forward_list<char>{'2', '1', '9'};
+    auto res = add(num1,num2);
+    GTEST_ASSERT_EQ(res, expected);
+}
+
+TEST(exercise5, addForward)
+{
+    auto num1 = forward_list<char>{'6', '1', '7'};
+    auto num2 = forward_list<char>{'2', '9', '5'};
+    auto expected = forward_list<char>{'9', '1', '2'};
+    auto res = addForward(num1,num2);
+    GTEST_ASSERT_EQ(res, expected);
 }
 
 int main(int argc, char* argv[])

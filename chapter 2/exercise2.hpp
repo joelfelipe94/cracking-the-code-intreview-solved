@@ -1,4 +1,5 @@
 // Implement an algorithm to find the kth to last element of a singly linked list.
+#pragma once
 #include <forward_list>
 #include <cassert>
 using namespace std;

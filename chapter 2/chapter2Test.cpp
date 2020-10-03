@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include "exercise1.hpp"
 #include "exercise2.hpp"
+#include "exercise3.hpp"
+#include <iterator>
 
 // Exercise 1
 
@@ -54,7 +56,24 @@ TEST(exercise2, getNthElementFromEndLast)
     GTEST_ASSERT_EQ(result, expected);
 }
 
+TEST(exercise2, deleteMiddleElement)
+{
+    auto listChar = forward_list<char>{'e', 'd', 'c', 'b', 'a'};
+    auto expected = forward_list<char>{'e', 'd', 'b', 'a'};
+    auto itMid = listChar.begin();
+    advance(itMid, 2);
+    deleteMiddleElement(listChar,itMid);
+    GTEST_ASSERT_EQ(listChar, expected);
+}
 
+TEST(exercise2, deleteMiddleElementFirst)
+{
+    auto listChar = forward_list<char>{'e', 'd', 'c', 'b', 'a'};
+    auto expected = forward_list<char>{'d', 'c', 'b', 'a'};
+    auto itMid = listChar.begin();
+    deleteMiddleElement(listChar,itMid);
+    GTEST_ASSERT_EQ(listChar, expected);
+}
 
 int main(int argc, char* argv[])
 {

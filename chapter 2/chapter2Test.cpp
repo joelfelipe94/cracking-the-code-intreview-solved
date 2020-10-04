@@ -4,6 +4,7 @@
 #include "exercise3.hpp"
 #include "exercise4.hpp"
 #include "exercise5.hpp"
+#include "exercise6.hpp"
 #include "exercise7.hpp"
 #include <iterator>
 
@@ -129,6 +130,14 @@ TEST(exercise5, addForward)
     auto expected = forward_list<char>{'9', '1', '2'};
     auto res = addForward(num1,num2);
     GTEST_ASSERT_EQ(res, expected);
+}
+
+TEST(exercise6, findLoopStart){
+    auto list = new Node<int>({1,2,3,4,5,6,7,8,9});
+    auto expectedLoop = list->getNth(3);
+    list->createLoop(expectedLoop);
+    auto resLoop=list->findLoopStart();
+    GTEST_ASSERT_EQ(expectedLoop, resLoop);
 }
 
 

@@ -4,6 +4,7 @@
 #include "exercise3.hpp"
 #include "exercise4.hpp"
 #include "exercise5.hpp"
+#include "exercise7.hpp"
 #include <iterator>
 
 // Exercise 1
@@ -128,6 +129,30 @@ TEST(exercise5, addForward)
     auto expected = forward_list<char>{'9', '1', '2'};
     auto res = addForward(num1,num2);
     GTEST_ASSERT_EQ(res, expected);
+}
+
+
+TEST(exercise7, isPalindromeFalse)
+{
+    auto inList = forward_list<int>{6, 1, 7, 8, 9};
+    auto res = isPalindrome(inList);
+    GTEST_ASSERT_EQ(res, false);
+}
+
+
+TEST(exercise7, isPalindromeOdd)
+{
+    auto inList = forward_list<int>{6, 1, 7, 1, 6};
+    auto res = isPalindrome(inList);
+    GTEST_ASSERT_EQ(res, true);
+}
+
+
+TEST(exercise7, isPalindromeEven)
+{
+    auto inList = forward_list<int>{6, 4, 4, 6};
+    auto res = isPalindrome(inList);
+    GTEST_ASSERT_EQ(res, true);
 }
 
 int main(int argc, char* argv[])

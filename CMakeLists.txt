@@ -8,3 +8,4 @@ include_directories(googletest/include) # this is so we can #include <gtest/gtes
 
 add_subdirectory(chapter\ 1) # add chapter 1 subdirectory
 add_subdirectory(chapter\ 2) # add chapter 2 subdirectory
+add_subdirectory(chapter\ 3) # add chapter 3 subdirectory

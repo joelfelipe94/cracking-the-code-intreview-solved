@@ -2,6 +2,7 @@
 #include "exercise1.hpp"
 #include "exercise2.hpp"
 #include "exercise3.hpp"
+#include "exercise4.hpp"
 
 // Exercise 1
 
@@ -123,6 +124,14 @@ TEST(exercise3, popAt)
     sos.pop(); 
     auto result = sos.top();
     GTEST_ASSERT_EQ(result, 30);
+}
+
+TEST(exercise4, TowersOfHanoi)
+{
+    vector<Tower> towers = {Tower(5), Tower(0), Tower(0)};
+    towers[0].moveToTower(5, towers[1], towers[2]);
+    vector<Tower> expected = {Tower(0), Tower(0), Tower(5)};
+    GTEST_ASSERT_EQ(towers, expected);
 }
 
 int main(int argc, char* argv[])

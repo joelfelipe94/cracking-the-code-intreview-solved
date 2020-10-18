@@ -1,9 +1,11 @@
 #include <gtest/gtest.h>
+#include <vector>
 #include "exercise1.hpp"
 #include "exercise2.hpp"
 #include "exercise3.hpp"
 #include "exercise4.hpp"
 #include "exercise5.hpp"
+#include "exercise6.hpp"
 
 // Exercise 1
 
@@ -172,6 +174,23 @@ TEST(exercise5, emptyQueueDequeue)
     catch(...) {
         FAIL() << "Expected std::logic_error";
     }
+}
+
+// Exercise 6
+
+TEST(exercise6, stackSort)
+{
+    std::stack<int> stk;
+    for (auto& item : {6, 5, 4, 4, 1, 2, 3}) {
+        stk.push(item);
+    }
+    std::stack<int> expected;
+    for (auto& item : {1, 2, 3, 4, 4, 5, 6}) {
+        expected.push(item);
+    }
+
+    sort(stk);
+    GTEST_ASSERT_EQ(stk, expected);
 }
 
 int main(int argc, char* argv[])

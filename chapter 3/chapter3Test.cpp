@@ -3,6 +3,7 @@
 #include "exercise2.hpp"
 #include "exercise3.hpp"
 #include "exercise4.hpp"
+#include "exercise5.hpp"
 
 // Exercise 1
 
@@ -126,12 +127,51 @@ TEST(exercise3, popAt)
     GTEST_ASSERT_EQ(result, 30);
 }
 
+// Exercise 4
+
 TEST(exercise4, TowersOfHanoi)
 {
     vector<Tower> towers = {Tower(5), Tower(0), Tower(0)};
     towers[0].moveToTower(5, towers[1], towers[2]);
     vector<Tower> expected = {Tower(0), Tower(0), Tower(5)};
     GTEST_ASSERT_EQ(towers, expected);
+}
+
+// Exercise 5
+
+TEST(exercise5, singleValueDequeue)
+{
+    DoubleStackQueue<int> dsq;
+    dsq.enqueue(1);
+    auto result = dsq.dequeue();
+    GTEST_ASSERT_EQ(result, 1);
+}
+
+TEST(exercise5, multipleValuesDequeue)
+{
+    DoubleStackQueue<int> dsq;
+    dsq.enqueue(1);
+    dsq.enqueue(2);
+    dsq.enqueue(3);
+    dsq.dequeue(); //dequeue 1
+    dsq.dequeue(); //dequeue 2
+    auto result = dsq.dequeue(); //dequeue 3
+    GTEST_ASSERT_EQ(result, 3);
+}
+
+TEST(exercise5, emptyQueueDequeue)
+{
+    DoubleStackQueue<int> dsq;
+    try {
+        dsq.dequeue();
+        FAIL() << "Expected std::logic_error";
+    }
+    catch(std::logic_error const & err) {
+        EXPECT_EQ(err.what(),std::string("Unable to dequeue empty queue"));
+    }
+    catch(...) {
+        FAIL() << "Expected std::logic_error";
+    }
 }
 
 int main(int argc, char* argv[])

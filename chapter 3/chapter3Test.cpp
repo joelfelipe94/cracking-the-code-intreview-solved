@@ -6,6 +6,7 @@
 #include "exercise4.hpp"
 #include "exercise5.hpp"
 #include "exercise6.hpp"
+#include "exercise7.hpp"
 
 // Exercise 1
 
@@ -191,6 +192,38 @@ TEST(exercise6, stackSort)
 
     sort(stk);
     GTEST_ASSERT_EQ(stk, expected);
+}
+
+// Exercise 7
+
+TEST(exercise7, DequeueAny)
+{
+    ShelterQueue shelterQueue;
+    shelterQueue.enqueue({"Laika", Animal_t::dog});
+    shelterQueue.enqueue({"Miau", Animal_t::cat});
+    auto result = shelterQueue.dequeueAny();
+    auto expected = Animal{"Laika", Animal_t::dog};
+    GTEST_ASSERT_EQ(result.name, expected.name);
+}
+
+TEST(exercise7, DequeueDog)
+{
+    ShelterQueue shelterQueue;
+    shelterQueue.enqueue({"Laika", Animal_t::dog});
+    shelterQueue.enqueue({"Miau", Animal_t::cat});
+    auto result = shelterQueue.dequeueDog();
+    auto expected = Animal{"Laika", Animal_t::dog};
+    GTEST_ASSERT_EQ(result.name, expected.name);
+}
+
+TEST(exercise7, DequeueCat)
+{
+    ShelterQueue shelterQueue;
+    shelterQueue.enqueue({"Laika", Animal_t::dog});
+    shelterQueue.enqueue({"Miau", Animal_t::cat});
+    auto result = shelterQueue.dequeueCat();
+    auto expected = Animal{"Miau", Animal_t::cat};
+    GTEST_ASSERT_EQ(result.name, expected.name);
 }
 
 int main(int argc, char* argv[])

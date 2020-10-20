@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "exercise1.hpp"
+#include "exercise2.hpp"
 
 // Exercise 1
 
@@ -20,6 +21,28 @@ TEST(exercise1, unbalancedTree)
     auto leftRoot = tree.addToLeft(2, root);
     tree.addToLeft(3, leftRoot);
     auto result = tree.isBalanced();
+    GTEST_ASSERT_EQ(result,false);
+}
+
+// Exercise 2
+
+TEST(exercise2, isConnected)
+{
+    NodeGraph <char> nodeD('D'), nodeC('C'), nodeB('B'), nodeA('A');
+    nodeC.adjacents.push_back(&nodeD); // C-> D
+    nodeA.adjacents.push_back(&nodeB); // A->B
+    nodeA.adjacents.push_back(&nodeC); // A->C
+    auto result = isConnected(&nodeA, &nodeD);
+    GTEST_ASSERT_EQ(result,true);
+}
+
+TEST(exercise2, isConnectedFalse)
+{
+    NodeGraph <char> nodeD('D'), nodeC('C'), nodeB('B'), nodeA('A');
+    nodeD.adjacents.push_back(&nodeC); // D-> C
+    nodeA.adjacents.push_back(&nodeB); // A->B
+    nodeA.adjacents.push_back(&nodeC); // A->C
+    auto result = isConnected(&nodeD, &nodeB);
     GTEST_ASSERT_EQ(result,false);
 }
 

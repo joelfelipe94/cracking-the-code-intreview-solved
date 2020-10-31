@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "exercise1.hpp"
 #include "exercise2.hpp"
+#include "exercise3.hpp"
 
 // Exercise 1
 
@@ -44,6 +45,15 @@ TEST(exercise2, isConnectedFalse)
     nodeA.adjacents.push_back(&nodeC); // A->C
     auto result = isConnected(&nodeD, &nodeB);
     GTEST_ASSERT_EQ(result,false);
+}
+
+TEST(exercise3, makeBynaryTree)
+{
+    auto input = std::vector<int>{1,2,3,4,5};
+    auto result = makeBynaryTree(&input[0], input.size());
+    std::vector<int> resultVec;
+    inOrderVisit(result,resultVec);
+    GTEST_ASSERT_EQ(resultVec,input);
 }
 
 

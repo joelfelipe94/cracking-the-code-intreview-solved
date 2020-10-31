@@ -47,6 +47,8 @@ TEST(exercise2, isConnectedFalse)
     GTEST_ASSERT_EQ(result,false);
 }
 
+// Exercise 3
+
 TEST(exercise3, makeBynaryTree)
 {
     auto input = std::vector<int>{1,2,3,4,5};
@@ -56,6 +58,43 @@ TEST(exercise3, makeBynaryTree)
     GTEST_ASSERT_EQ(resultVec,input);
 }
 
+// Exercise 4 
+
+TEST(exercise4, makeListFirst)
+{
+    Tree<int> tree;
+    auto root = tree.addToRoot(1);
+    auto leftChild = tree.addToLeft(2, root);
+    auto leftGrandChild = tree.addToLeft(3, leftChild);
+    auto result = tree.makeLists();
+    std::vector< std::list< NodeTree<int> > > expected(3);
+    expected[0].push_back(*root);
+    expected[1].push_back(*leftChild);
+    expected[2].push_back(*leftGrandChild);
+    GTEST_ASSERT_EQ(result,expected);
+}
+
+TEST(exercise4, makeListsSecond)
+{
+    Tree<int> tree;
+    auto root = tree.addToRoot(1);
+    auto leftChild = tree.addToLeft(2, root);
+    auto rightChild = tree.addToRight(3, root);
+    auto result = tree.makeLists();
+    std::vector< std::list< NodeTree<int> > > expected(2);
+    expected[0].push_back(*root);
+    expected[1].push_back(*leftChild);
+    expected[1].push_back(*rightChild);
+    GTEST_ASSERT_EQ(result,expected);
+}
+
+TEST(exercise4, makeListsEmpty)
+{
+    Tree<int> tree;
+    auto result = tree.makeLists();
+    std::vector< std::list< NodeTree<int> > > expected;
+    GTEST_ASSERT_EQ(result,expected);
+}
 
 int main(int argc, char* argv[])
 {

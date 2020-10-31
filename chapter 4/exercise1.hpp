@@ -7,6 +7,7 @@
 #include<algorithm> //max
 #include<exception> //logic_error
 #include<stack>
+#include<list>
 template <class T>
 struct NodeTree
 {
@@ -15,15 +16,25 @@ struct NodeTree
     NodeTree<T> *left;
     T data;
     NodeTree(T data, NodeTree<T>*right, NodeTree<T> *left);
+    bool operator==(const NodeTree<T>& other) const;
 };
+
+template<class T>
+bool NodeTree<T>::operator==(const NodeTree<T>& other) const{
+    return this->data == other.data;
+}
 
 template<class T>
 class Tree
 {
+private:
     NodeTree<T> *root;
     int isBalancedRec(NodeTree<T> *node);
     void addToAdress(T data, NodeTree<T> *&node);
+    void makeListsRec(NodeTree<T> *node, 
+                      std::vector< std::list< NodeTree<T> > > &vec, int level);
 public:
+    std::vector< std::list< NodeTree<T> > > makeLists();
     NodeTree<T> * addToRoot(T data);
     NodeTree<T> * addToLeft(T data, NodeTree<T> *node);
     NodeTree<T> * addToRight(T data, NodeTree<T> *node);
@@ -70,7 +81,8 @@ template <class T>
 Tree<T>::~Tree()
 {
     std::stack< NodeTree<T>* > nodesToErase;
-    nodesToErase.push(root);
+    if(root != nullptr)
+        nodesToErase.push(root);
     while(!nodesToErase.empty()){
         auto node = nodesToErase.top();
         nodesToErase.pop();
@@ -123,3 +135,5 @@ NodeTree<T> * Tree<T>::addToRight(T data, NodeTree<T> *node)
     addToAdress(data, node->right);
     return node->right;
 }
+
+#include "exercise4.tpp"

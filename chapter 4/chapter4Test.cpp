@@ -96,6 +96,33 @@ TEST(exercise4, makeListsEmpty)
     GTEST_ASSERT_EQ(result,expected);
 }
 
+// Exercise 5
+
+TEST(exercise5, isBinarySearchTreeTrue)
+{
+    Tree <int> tree;
+    auto root=tree.addToRoot(2);
+    tree.addToLeft(1, root);
+    tree.addToRight(3, root);
+    GTEST_ASSERT_EQ(tree.isBinarySearchTree(),true);
+}
+
+
+TEST(exercise5, isBinarySearchTreeFalse)
+{
+    Tree <int> tree;
+    auto root=tree.addToRoot(1);
+    tree.addToLeft(2, root);
+    tree.addToRight(3, root);
+    GTEST_ASSERT_EQ(tree.isBinarySearchTree(),false);
+}
+
+TEST(exercise5, isBinarySearchTreeEmpty)
+{
+    Tree <int> tree;
+    GTEST_ASSERT_EQ(tree.isBinarySearchTree(),true);
+}
+
 int main(int argc, char* argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);

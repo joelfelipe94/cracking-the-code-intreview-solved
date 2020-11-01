@@ -36,6 +36,7 @@ private:
                       std::vector<std::list<NodeTree<T>>> &vec, int level); //exercise 4
 public:
     std::vector<std::list<NodeTree<T>>> makeLists(); //exercise 4
+    bool isBinarySearchTree();
     NodeTree<T> *addToRoot(T data);
     NodeTree<T> *addToLeft(T data, NodeTree<T> *node);
     NodeTree<T> *addToRight(T data, NodeTree<T> *node);
@@ -141,3 +142,4 @@ NodeTree<T> *Tree<T>::addToRight(T data, NodeTree<T> *node)
 }
 
 #include "exercise4.tpp"
+#include "exercise5.tpp"

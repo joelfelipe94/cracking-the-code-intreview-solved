@@ -20,7 +20,7 @@ internalAdd(forward_list<char> num1, forward_list<char> num2){
     forward_list<char> res;
     if (size1 < size2)
         expandNumber(num1, size2 - size1);
-    else if(size2 > size1)
+    else if(size1 > size2)
         expandNumber(num2, size1 - size2);
     char carry = 0;
     for(auto it1=num1.begin(), it2=num2.begin() ; it1 != num1.end(); it1++, it2++){
@@ -41,6 +41,8 @@ forward_list<char> add(const forward_list<char> &num1, const forward_list<char> 
     res.reverse();
     return res;
 }
+
+
 
 // Suppose the digits are stored in forward order. Repeat the above problem.
 forward_list<char> addForward(forward_list<char> num1, forward_list<char> num2){

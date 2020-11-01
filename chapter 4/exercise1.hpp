@@ -34,8 +34,12 @@ private:
     void addToAdress(T data, NodeTree<T> *&node);
     void makeListsRec(NodeTree<T> *node,
                       std::vector<std::list<NodeTree<T>>> &vec, int level); //exercise 4
+    int firstCommonAncestor(NodeTree<T> *root, NodeTree<T> *&result, //exercise 7
+                            NodeTree<T> *a, NodeTree<T> *b);
 public:
+
     std::vector<std::list<NodeTree<T>>> makeLists(); //exercise 4
+    NodeTree<T> * firstCommonAncestor(NodeTree<T>* a, NodeTree<T>* b);//exercise 7
     bool isBinarySearchTree();
     NodeTree<T> *addToRoot(T data);
     NodeTree<T> *addToLeft(T data, NodeTree<T> *node);
@@ -143,3 +147,4 @@ NodeTree<T> *Tree<T>::addToRight(T data, NodeTree<T> *node)
 
 #include "exercise4.tpp"
 #include "exercise5.tpp"
+#include "exercise7.tpp"

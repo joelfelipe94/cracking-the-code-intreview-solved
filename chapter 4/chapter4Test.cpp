@@ -181,6 +181,47 @@ TEST(exercise6, nextNodeFromGrandParent)
     GTEST_ASSERT_EQ(result, &rightGrandchild);
 }
 
+// Exercise 7
+
+TEST(exercise7, firstCommonAncestor)
+{
+    Tree<int> tree;
+    auto root = tree.addToRoot(1);
+    auto leftChild = tree.addToLeft(2, root);
+    auto rightChild = tree.addToRight(3, root);
+    auto result = tree.firstCommonAncestor(leftChild, rightChild);
+    GTEST_ASSERT_EQ(result, root);
+}
+
+TEST(exercise7, firstCommonAncestorEmptyTree)
+{
+    Tree<int> tree;
+    auto result = tree.firstCommonAncestor(nullptr, nullptr);
+    GTEST_ASSERT_EQ(result, nullptr);
+}
+
+TEST(exercise7, firstCommonAncestorAisBAncestor)
+{
+    Tree<int> tree;
+    auto root = tree.addToRoot(1);
+    auto leftChild = tree.addToLeft(2, root);
+    auto leftGrandChild = tree.addToLeft(3, leftChild);
+    auto leftGrandGrandChild = tree.addToRight(4, leftGrandChild);
+    auto result = tree.firstCommonAncestor(leftChild, leftGrandGrandChild);
+    GTEST_ASSERT_EQ(result, leftChild);
+}
+
+TEST(exercise7, firstCommonAncestorBisAAncestor)
+{
+    Tree<int> tree;
+    auto root = tree.addToRoot(1);
+    auto child = tree.addToRight(2, root);
+    auto grandChild = tree.addToLeft(3, child);
+    auto grandGrandChild = tree.addToRight(4, grandChild);
+    auto result = tree.firstCommonAncestor(grandGrandChild, child);
+    GTEST_ASSERT_EQ(result, child);
+}
+
 int main(int argc, char* argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);

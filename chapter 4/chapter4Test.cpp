@@ -2,6 +2,7 @@
 #include "exercise1.hpp"
 #include "exercise2.hpp"
 #include "exercise3.hpp"
+#include "exercise6.hpp"
 
 // Exercise 1
 
@@ -121,6 +122,63 @@ TEST(exercise5, isBinarySearchTreeEmpty)
 {
     Tree <int> tree;
     GTEST_ASSERT_EQ(tree.isBinarySearchTree(),true);
+}
+
+// Exercise 6
+
+TEST(exercise6, nextNodeNullptr)
+{
+    auto result = nextNode<int>( nullptr);
+    decltype(result) expected = nullptr;
+    GTEST_ASSERT_EQ(result, expected);
+}
+
+
+TEST(exercise6, nextNodeNoNext)
+{
+    NodeTreeWP<int> root(1), leftChild(0), rightChild(2);
+    root.addToLeft(&leftChild);
+    root.addToRight(&rightChild);
+    auto result = nextNode<int>( &rightChild);
+    GTEST_ASSERT_EQ(result, nullptr);
+}
+
+TEST(exercise6, nextNodeFromLeft)
+{
+    NodeTreeWP<int> root(1), leftChild(0), rightChild(2);
+    root.addToLeft(&leftChild);
+    root.addToRight(&rightChild);
+    auto result = nextNode<int>( &leftChild);
+    GTEST_ASSERT_EQ(result, &root);
+}
+
+TEST(exercise6, nextNodeFromParent)
+{
+    NodeTreeWP<int> root(1), leftChild(0), rightChild(2);
+    root.addToLeft(&leftChild);
+    root.addToRight(&rightChild);
+    auto result = nextNode<int>( &root);
+    GTEST_ASSERT_EQ(result, &rightChild);
+}
+
+TEST(exercise6, nextNodeFromLeftGrandchild)
+{
+    NodeTreeWP<int> root(1), leftChild(0), rightChild(2), leftGrandchild(1);
+    root.addToLeft(&leftChild);
+    leftChild.addToRight(&leftGrandchild);
+    root.addToRight(&rightChild);
+    auto result = nextNode<int>( &leftGrandchild);
+    GTEST_ASSERT_EQ(result, &root);
+}
+
+TEST(exercise6, nextNodeFromGrandParent)
+{
+    NodeTreeWP<int> root(1), leftChild(0), rightChild(2), rightGrandchild(3);
+    root.addToLeft(&leftChild);
+    root.addToRight(&rightChild);
+    rightChild.addToLeft(&rightGrandchild);
+    auto result = nextNode<int>( &root);
+    GTEST_ASSERT_EQ(result, &rightGrandchild);
 }
 
 int main(int argc, char* argv[])

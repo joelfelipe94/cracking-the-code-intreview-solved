@@ -256,6 +256,49 @@ TEST(exercise8, compareTreesFalse)
     GTEST_ASSERT_EQ(result, false);
 }
 
+// Exercise 9
+
+TEST(exercise9, printSum)
+{
+    Tree<int> tree;
+    auto root = tree.addToRoot(1);
+    auto leftChild = tree.addToLeft(2, root);
+    tree.addToRight(3, root);
+    tree.addToLeft(4, leftChild);
+
+    testing::internal::CaptureStdout();   // capture the print
+    tree.printSum(3);
+    std::string result = testing::internal::GetCapturedStdout();
+    std::string expected = "1->2->END\n3->END\n";
+    GTEST_ASSERT_EQ(result, expected);
+}
+
+TEST(exercise9, printSumEmpty)
+{
+    Tree<int> tree1;
+
+    testing::internal::CaptureStdout();   // capture the print
+    tree1.printSum(3);
+    std::string result = testing::internal::GetCapturedStdout();
+    std::string expected = "";
+    GTEST_ASSERT_EQ(result, expected);
+}
+
+TEST(exercise9, printSumNoPath)
+{
+    Tree<int> tree;
+    auto root = tree.addToRoot(1);
+    auto leftChild = tree.addToLeft(2, root);
+    tree.addToRight(3, root);
+    tree.addToLeft(4, leftChild);
+
+    testing::internal::CaptureStdout();   // capture the print
+    tree.printSum(9);
+    std::string result = testing::internal::GetCapturedStdout();
+    std::string expected = "";
+    GTEST_ASSERT_EQ(result, expected);
+}
+
 int main(int argc, char* argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);

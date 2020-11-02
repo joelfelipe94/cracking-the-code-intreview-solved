@@ -36,10 +36,13 @@ private:
                       std::vector<std::list<NodeTree<T>>> &vec, int level); //exercise 4
     int firstCommonAncestor(NodeTree<T> *root, NodeTree<T> *&result, //exercise 7
                             NodeTree<T> *a, NodeTree<T> *b);
+    void printSumRec(std::list<NodeTree<T>*>path, T sum, T targetSum);
+    void printPath(std::list<NodeTree<T>*> path);
 public:
     std::vector<std::list<NodeTree<T>>> makeLists(); //exercise 4
     NodeTree<T> * firstCommonAncestor(NodeTree<T>* a, NodeTree<T>* b);//exercise 7
-    bool hasSubtree(Tree<T> &T2);
+    bool hasSubtree(Tree<T> &T2);//exercise 8
+    void printSum(T targetSum);
     bool isBinarySearchTree();
     NodeTree<T> *addToRoot(T data);
     NodeTree<T> *addToLeft(T data, NodeTree<T> *node);
@@ -149,3 +152,4 @@ NodeTree<T> *Tree<T>::addToRight(T data, NodeTree<T> *node)
 #include "exercise5.tpp"
 #include "exercise7.tpp"
 #include "exercise8.tpp"
+#include "exercise9.tpp"

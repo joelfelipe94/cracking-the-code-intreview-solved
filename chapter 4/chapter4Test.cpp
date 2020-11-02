@@ -222,6 +222,40 @@ TEST(exercise7, firstCommonAncestorBisAAncestor)
     GTEST_ASSERT_EQ(result, child);
 }
 
+// Exercise 8
+
+TEST(exercise8, compareTreesTrue)
+{
+    Tree<int> tree1;
+    auto root1 = tree1.addToRoot(1);
+    auto leftChild1 = tree1.addToLeft(2, root1);
+    tree1.addToRight(3, root1);
+    tree1.addToLeft(4, leftChild1);
+
+    Tree<int> tree2;
+    auto root2 = tree2.addToRoot(2);
+    tree2.addToLeft(4, root2);
+
+    auto result = tree1.hasSubtree(tree2);
+    GTEST_ASSERT_EQ(result, true);
+}
+
+TEST(exercise8, compareTreesFalse)
+{
+    Tree<int> tree1;
+    auto root1 = tree1.addToRoot(1);
+    auto leftChild1 = tree1.addToLeft(2, root1);
+    tree1.addToRight(3, root1);
+    tree1.addToLeft(4, leftChild1);
+
+    Tree<int> tree2;
+    auto root2 = tree2.addToRoot(2);
+    tree2.addToLeft(4, root2);
+
+    auto result = tree2.hasSubtree(tree1);
+    GTEST_ASSERT_EQ(result, false);
+}
+
 int main(int argc, char* argv[])
 {
     ::testing::InitGoogleTest(&argc, argv);
